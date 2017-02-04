@@ -49,6 +49,15 @@ ng-map {
   z-index: 1;
   padding: 10px 10px 0 10px;
   width: 100%;
+  text-align: left;
+}
+
+.logout {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  padding: 10px 10px 0 10px;
+  width: 100%;
   text-align: right;
 }
 

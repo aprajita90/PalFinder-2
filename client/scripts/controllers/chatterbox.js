@@ -27,12 +27,9 @@ angular.module('myApp').controller('chatterboxCtrl', function($scope, $location,
     ref.limitToLast(9).on('value', function(chat) {
       $scope.messageObj = chat.val();
       $scope.$apply();
+      $rootScope.isAllowed = true;
+      $location.path('/map');
     });
-
-    //in partial, need div that show for 5 second when a new message is posted
-    //may not need a separate controller. Just use the chatterbox controller, and
-    //in fetch message method, populate a $scope.notification variable which the view will listen.
-    //clicking on the notification window will open the chatterbox view /send-message
 
   };
 

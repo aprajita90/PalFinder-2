@@ -15,13 +15,25 @@ angular.module('myApp').config(function($routeProvider, $locationProvider, $http
   });
 
   $routeProvider
-  .when('/', {
+  .when('/map', {
     templateUrl: '../../partials/pinButtons.html',
     controller: 'chatterboxCtrl',
   })
   .when('/send-message', {
     templateUrl: '../../partials/chatWindow.html',
     controller: 'chatterboxCtrl',
+  })
+  .when('/signup', {
+            templateUrl: '../../partials/signup.html',
+            controller: 'registerLogInLogOut'
+  })
+  .when('/', {
+      templateUrl: '../../partials/login.html',
+      controller: 'registerLogInLogOut',
+  })
+  .when('/map', {
+      templateUrl: '../../partials/map.html',
+      controller: 'initializeMap'
   });
 
 });

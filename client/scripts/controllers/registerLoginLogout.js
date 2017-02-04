@@ -7,6 +7,8 @@ angular.module('myApp').controller('registerLogInLogOut', function($rootScope, $
         username: $scope.email.slice(0, $scope.email.indexOf('@')),
         email: $scope.email,
       });
+      $rootScope.isAllowed = true;
+      $location.path('/map');
     })
     register.catch(function(error) {
       console.log(error.message);
@@ -19,11 +21,16 @@ angular.module('myApp').controller('registerLogInLogOut', function($rootScope, $
       $scope.password = '';
       $scope.badLogin = '';
       $scope.$apply();
+
+      $rootScope.isAllowed = true;
+      $location.path('/map');
     });
     login.catch(function(error) {
       console.log(error.message);
       $scope.badLogin = error.message + ' If you don\'t have an account, please sign up!'
       $scope.$apply();
+      $rootScope.isAllowed = true;
+      $location.path('/signup');
     })
   };
   $scope.logOut = function() {
@@ -34,6 +41,8 @@ angular.module('myApp').controller('registerLogInLogOut', function($rootScope, $
       $rootScope.$broadcast('user:loggedOut', '');
       databaseAndAuth.auth.signOut();
       console.log('user logged out: ', $scope.userId);
+      $rootScope.isAllowed = true;
+      $location.path('/');
     });
   };
   $scope.showPartial = function(location) {
@@ -59,6 +68,7 @@ angular.module('myApp').controller('registerLogInLogOut', function($rootScope, $
       //hide logout button (user is not logged in)
       $scope.loggedIn = false;
       $scope.$apply();
+      //$location.path('/login');
     }
   });
 });
